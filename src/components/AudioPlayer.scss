@@ -1,0 +1,131 @@
+* {
+  // outline: 1px solid red;
+}
+
+.audio-player-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .controls {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+
+    .control-btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .time-data {
+      display: flex;
+      align-self: flex-start;
+      font-size: 0.7em;
+    }
+  }
+}
+.speaker-icon,
+.speaker-off-icon {
+  color: white;
+  height: 26px;
+  transition: transform 0.1s ease-out;
+  margin-right: 1em;
+
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.play-icon,
+.pause-icon,
+.replay-icon {
+  height: 2.2em;
+  position: absolute;
+  right: 0;
+}
+
+.rewind-icon,
+.fast-forward-icon {
+  display: none;
+  display: none;
+}
+
+.nav-wrapper {
+  margin-left: 0px;
+  height: 5px;
+  width: 100%;
+  background-color: gray;
+  cursor: pointer;
+  .seek-bar {
+    width: 40%;
+    height: 5px;
+    background-color: #fff;
+    margin-right: auto;
+    will-change: width;
+  }
+}
+
+.player-wrapper {
+  margin-left: 1em;
+  width: 100%;
+  .beaker-icon {
+    color: gray;
+  }
+}
+
+.volume-wrapper {
+  display: none;
+
+  .volume-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 180px;
+  }
+}
+
+.tunes-player {
+  padding-bottom: 0px !important;
+}
+
+@media (min-width: 540px) {
+  .rewind-icon,
+  .fast-forward-icon {
+    display: block;
+    height: 1.5em;
+  }
+  .rewind-icon,
+  .fast-forward-icon {
+    padding-right: 1em;
+  }
+  .play-icon,
+  .pause-icon,
+  .replay-icon {
+    padding-right: 1em;
+    height: 2.5em;
+    position: static;
+    right: 0;
+  }
+  .control-btns {
+    flex-direction: row-reverse;
+  }
+  .play-rewind-fastf {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .volume-wrapper {
+    display: flex;
+    position: relative;
+    top: -20px;
+    align-items: center;
+    justify-content: flex-end;
+    width: fit-content;
+    margin-left: auto;
+  }
+  .time-data {
+    font-size: 1em important;
+  }
+}
