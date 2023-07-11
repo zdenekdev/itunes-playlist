@@ -5,11 +5,13 @@
 .audio-player-wrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   .controls {
     display: flex;
     position: relative;
     justify-content: space-between;
+    height: 2.4em;
 
     .control-btns {
       display: flex;
@@ -21,14 +23,14 @@
     .time-data {
       display: flex;
       align-self: flex-start;
-      font-size: 0.7em;
+      font-size: 0.8em;
     }
   }
 }
 .speaker-icon,
 .speaker-off-icon {
   color: white;
-  height: 26px;
+  height: 1.9em;
   transition: transform 0.1s ease-out;
   margin-right: 1em;
 
@@ -41,9 +43,14 @@
 .play-icon,
 .pause-icon,
 .replay-icon {
-  height: 2.2em;
+  width: 2.2em;
   position: absolute;
   right: 0;
+}
+
+.replay-icon {
+  width: 2.2em !important;
+  padding: 0 0.1em;
 }
 
 .rewind-icon,
@@ -90,20 +97,29 @@
   padding-bottom: 0px !important;
 }
 
+.icon {
+  transition: transform 0.2s;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
 @media (min-width: 540px) {
   .rewind-icon,
   .fast-forward-icon {
     display: block;
     height: 1.5em;
   }
-  .rewind-icon,
-  .fast-forward-icon {
-    padding-right: 1em;
-  }
+  // .rewind-icon,
+  // .fast-forward-icon {
+  //   padding-right: 1em;
+  // }
   .play-icon,
   .pause-icon,
   .replay-icon {
-    padding-right: 1em;
+    // padding-right: 1em;
     height: 2.5em;
     position: static;
     right: 0;
@@ -115,17 +131,17 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    width: 7em;
   }
   .volume-wrapper {
     display: flex;
-    position: relative;
-    top: -20px;
+    position: absolute;
+    bottom: -2em;
+    right: 0;
     align-items: center;
     justify-content: flex-end;
     width: fit-content;
     margin-left: auto;
-  }
-  .time-data {
-    font-size: 1em important;
   }
 }

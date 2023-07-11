@@ -57,6 +57,9 @@ function AudioPlayer(props: { song: Song }) {
     if (audioEl.current) {
       const newVol = +volumeVal / 100;
       audioEl.current.volume = newVol;
+      if (newVol === 0) {
+        setVolumeOn(false);
+      }
     }
 
     let intervalId: NodeJS.Timeout | null = null;

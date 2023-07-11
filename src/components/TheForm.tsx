@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import "./TheForm.scss";
 import Spinner from "react-spinkit";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { MusicalNoteIcon } from "@heroicons/react/24/outline";
 
 interface searchTerm {
   getSearchTerm: (term: string) => void;
@@ -79,7 +80,7 @@ function TheForm(props: searchTerm) {
       />
       <div className={props.emptySearch}>
         <div className="emptyDiv">
-          <MagnifyingGlassIcon className="search-icon" />
+          <MusicalNoteIcon className="note-icon" />
           <div>
             <h2>Nic jsme nenašli</h2>
             <p>Zkuste prosím hledaný výraz upravit</p>

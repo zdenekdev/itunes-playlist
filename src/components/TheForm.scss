@@ -12,9 +12,27 @@
   .emptySearch {
     margin-top: 3em;
     color: white;
+    max-width: 26em;
     width: 100%;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    animation: fade-in 0.2s forwards;
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: scale(0.7);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
     .emptyDiv {
-      margin-inline: 1em;
+      // margin-inline: 1em;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -31,9 +49,11 @@
         font-size: 1.3em;
       }
     }
-    .search-icon {
+    .note-icon {
+      padding-top: 0.3em;
+      left: 0em;
       height: 2.5em;
-      margin-left: 2em;
+
       margin-right: 0.5em;
     }
   }

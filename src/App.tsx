@@ -67,17 +67,17 @@ function App() {
 
   return (
     <div className="app">
-      <div className="cover">
-        <div className="playlist">
-          <TheIntro />
-          <TheForm
-            getSearchTerm={getSearchTerm}
-            loading={loading}
-            emptySearch={emptySearch}
-          />
-          <TunesList musicList={musicList} />
-        </div>
+      {/* <div className="cover"> */}
+      <div className="playlist">
+        <TheIntro />
+        <TheForm
+          getSearchTerm={getSearchTerm}
+          loading={loading}
+          emptySearch={emptySearch}
+        />
+        <TunesList musicList={musicList} />
       </div>
+      {/* </div> */}
     </div>
   );
 }
