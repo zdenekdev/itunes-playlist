@@ -60,7 +60,7 @@ function TheForm(props: searchTerm) {
       <form className="theform" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Hledat píseň nebo interpreta"
+          placeholder="Hledat píseň, interpreta nebo album"
           onChange={handleChange}
           ref={inputRef}
         />
