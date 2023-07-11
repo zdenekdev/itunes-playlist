@@ -1,5 +1,5 @@
 import { debounce } from "lodash-es";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./TheForm.scss";
 import Spinner from "react-spinkit";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
@@ -21,21 +21,29 @@ function TheForm(props: searchTerm) {
     } else {
       setInputText(false);
     }
-    searchForMusic();
+
+    debouncedSearchForMusic();
   };
 
+  const debouncedSearchForMusic = useCallback(
+    debounce(() => {
+      console.log("debounce");
+      searchForMusic();
+    }, 500),
+    []
+  );
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     searchForMusic();
   };
 
-  const searchForMusic = debounce((): void => {
+  const searchForMusic = (): void => {
     let input = inputRef.current!.value.trim().toString();
 
     if (input.length > 1) {
       props.getSearchTerm(input);
     }
-  }, 500);
+  };
 
   const deleteInput = () => {
     inputRef.current!.value = "";
