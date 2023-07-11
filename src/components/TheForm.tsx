@@ -1,8 +1,8 @@
 import { debounce } from "lodash-es";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./TheForm.scss";
 import Spinner from "react-spinkit";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
 interface searchTerm {
   getSearchTerm: (term: string) => void;
@@ -12,35 +12,56 @@ interface searchTerm {
 
 function TheForm(props: searchTerm) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [inputText, setInputText] = useState(false);
 
-  const handleChange = debounce(() => {
+  const handleChange = () => {
+    let input = inputRef.current!.value.trim().toString();
+    if (input.length > 0) {
+      setInputText(true);
+    } else {
+      setInputText(false);
+    }
     searchForMusic();
-  }, 500);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     searchForMusic();
   };
 
-  const searchForMusic = (): void => {
-    let input = inputRef.current!.value.toString();
-    if (input.length > 2) {
+  const searchForMusic = debounce((): void => {
+    let input = inputRef.current!.value.trim().toString();
+
+    if (input.length > 1) {
       props.getSearchTerm(input);
     }
+  }, 500);
+
+  const deleteInput = () => {
+    inputRef.current!.value = "";
+    setInputText(false);
+    inputRef.current!.focus();
   };
+
+  useEffect(() => {
+    inputRef.current!.focus();
+  });
 
   return (
     <div className="formContainer">
       <form className="theform" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="hledat píseň nebo interpreta..."
+          placeholder="Hledat píseň nebo interpreta"
           onChange={handleChange}
           ref={inputRef}
         />
         <button type="submit">
-          <MagnifyingGlassIcon className="searchIcon" />
+          <MagnifyingGlassIcon className="search-icon" />
         </button>
+        {inputText && (
+          <XMarkIcon className="delete-icon" onClick={deleteInput} />
+        )}
       </form>
       <Spinner
         className={props.loading}
@@ -50,7 +71,7 @@ function TheForm(props: searchTerm) {
       />
       <div className={props.emptySearch}>
         <div className="emptyDiv">
-          <MagnifyingGlassIcon className="searchIcon" />
+          <MagnifyingGlassIcon className="search-icon" />
           <div>
             <h2>Nic jsme nenašli</h2>
             <p>Zkuste prosím hledaný výraz upravit</p>
