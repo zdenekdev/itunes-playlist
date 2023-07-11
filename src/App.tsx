@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TheForm from "./components/TheForm";
 import TunesList from "./components/TunesList";
 import axios from "axios";
@@ -60,6 +60,10 @@ function App() {
       })
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    getSearchTerm("great");
+  }, []);
 
   return (
     <div className="app">
