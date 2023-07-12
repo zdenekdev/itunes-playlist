@@ -1,6 +1,8 @@
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
 import "./TheFooter.scss";
 import { useEffect, useState } from "react";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function TheFooter() {
   const [showTopBtn, setShowTopBtn] = useState(false);
@@ -25,7 +27,14 @@ function TheFooter() {
 
   return (
     <div className="footer-container">
-      TheFooter
+      <div className="socials">
+        <i className="icon-container">
+          <FontAwesomeIcon icon={faGithub} className="github-icon" />
+        </i>
+        <i className="icon-container">
+          <FontAwesomeIcon icon={faLinkedin} className="linkedin-icon" />
+        </i>
+      </div>
       {showTopBtn && (
         <ChevronUpIcon className="chevron-up-icon" onClick={goToTop} />
       )}
