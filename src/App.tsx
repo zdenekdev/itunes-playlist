@@ -4,6 +4,7 @@ import TunesList from "./components/TunesList";
 import axios from "axios";
 import "./App.scss";
 import TheIntro from "./components/TheIntro";
+import TheFooter from "./components/TheFooter";
 
 type itunesSong = {
   trackId: number;
@@ -76,6 +77,7 @@ function App() {
           emptySearch={emptySearch}
         />
         <TunesList musicList={musicList} />
+        <TheFooter />
       </div>
       {/* </div> */}
     </div>
