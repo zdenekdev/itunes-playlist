@@ -5,7 +5,7 @@
   gap: 1em;
   margin-top: 4em;
   width: 100%;
-  max-width: 88em;
+  max-width: 88rem;
   height: 6em;
   // padding: 1em 2em;
   .socials {
@@ -45,6 +45,7 @@
     background-color: rgba(249, 249, 249, 0.2);
     cursor: pointer;
     transition: transform 0.1s;
+    outline: none;
 
     @media (min-width: 88em) {
       right: calc(50% - 42em);

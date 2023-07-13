@@ -11,7 +11,7 @@
   .emptySearch {
     margin-top: 3em;
     color: white;
-    max-width: 26em;
+    max-width: 30em;
     width: 100%;
     // display: flex;
     // justify-content: center;
@@ -31,7 +31,7 @@
 
     .emptyDiv {
       // margin-inline: 1em;
-      width: 100%;
+      // width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -41,7 +41,7 @@
         rgb(128, 128, 128, 0.7),
         rgb(255, 255, 255, 0.1)
       );
-
+      margin: 0 2em;
       padding: 2em;
       border-radius: 1em;
       h2 {

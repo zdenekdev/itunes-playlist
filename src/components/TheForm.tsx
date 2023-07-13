@@ -26,18 +26,6 @@ function TheForm(props: searchTerm) {
     debouncedSearchForMusic();
   };
 
-  const debouncedSearchForMusic = useCallback(
-    debounce(() => {
-      console.log("debounce");
-      searchForMusic();
-    }, 500),
-    []
-  );
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    searchForMusic();
-  };
-
   const searchForMusic = (): void => {
     let input = inputRef.current!.value.trim().toString();
 
@@ -46,15 +34,24 @@ function TheForm(props: searchTerm) {
     }
   };
 
+  const debouncedSearchForMusic = useCallback(
+    debounce(() => {
+      console.log("debounce");
+      searchForMusic();
+    }, 500),
+    []
+  );
+  const handleSubmit = (e: React.FormEvent) => {
+    inputRef.current!.blur();
+    e.preventDefault();
+    searchForMusic();
+  };
+
   const deleteInput = () => {
     inputRef.current!.value = "";
     setInputText(false);
     inputRef.current!.focus();
   };
-
-  useEffect(() => {
-    inputRef.current!.focus();
-  });
 
   return (
     <div className="formContainer">
@@ -64,6 +61,7 @@ function TheForm(props: searchTerm) {
           placeholder="Hledat píseň, interpreta nebo album"
           onChange={handleChange}
           ref={inputRef}
+          autoComplete="off"
         />
         <button type="submit">
           <MagnifyingGlassIcon className="search-icon" />

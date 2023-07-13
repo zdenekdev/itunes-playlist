@@ -8,17 +8,27 @@ function TheFooter() {
   const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
-    console.log(window);
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 700) {
+    const handleScroll = () => {
+      const scrollThreshold = document.documentElement.scrollHeight * 0.7;
+
+      const curPosition = window.innerHeight + window.scrollY;
+
+      if (curPosition > scrollThreshold && scrollThreshold > 1000) {
         setShowTopBtn(true);
       } else {
         setShowTopBtn(false);
       }
+    };
+    window.addEventListener("scroll", () => {
+      handleScroll();
     });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const goToTop = () => {
+    console.log(window.scrollY * 0.9, window.scrollY);
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -35,6 +45,7 @@ function TheFooter() {
           <FontAwesomeIcon icon={faLinkedin} className="linkedin-icon" />
         </i>
       </div>
+
       {showTopBtn && (
         <ChevronUpIcon className="chevron-up-icon" onClick={goToTop} />
       )}

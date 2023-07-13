@@ -66,6 +66,8 @@ function App() {
     getSearchTerm("great");
   }, []);
 
+  console.log(navigator.userAgent);
+
   return (
     <div className="app">
       {/* <div className="cover"> */}
