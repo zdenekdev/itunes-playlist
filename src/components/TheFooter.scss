@@ -56,3 +56,19 @@
     }
   }
 }
+
+@media (max-width: 1024px) {
+  .footer-container {
+    .socials {
+      .github-icon,
+      .linkedin-icon {
+        height: 1.8em;
+        width: 1.8em;
+      }
+    }
+
+    .chevron-up-icon {
+      width: 3em;
+    }
+  }
+}
