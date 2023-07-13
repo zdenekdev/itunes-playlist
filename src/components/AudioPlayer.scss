@@ -1,5 +1,4 @@
 * {
-  // outline: 1px solid red;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -31,21 +30,20 @@
 .speaker-icon,
 .speaker-off-icon {
   color: white;
-  height: 1.9em;
+  height: 2em;
   transition: transform 0.1s ease-out;
   margin-right: 1em;
 
   cursor: pointer;
-  &:hover {
-    transform: scale(1.2);
+  &:active {
+    transform: scale(0.8);
   }
 }
 
 .play-icon,
 .pause-icon,
 .replay-icon {
-  width: 2.2em;
-  position: absolute;
+  width: 3em;
   right: 0;
 }
 
@@ -64,14 +62,18 @@
 }
 
 .replay-icon {
-  width: 2.2em !important;
-  padding: 0 0.1em;
+  width: 3em !important;
+  padding: 0.2em;
 }
 
 .rewind-icon,
 .fast-forward-icon {
-  display: none;
-  display: none;
+  // display: none;
+  order: -1;
+  height: 1.7em;
+  &:active {
+    transform: scale(0.8);
+  }
 }
 
 .nav-wrapper {
@@ -121,11 +123,22 @@
   }
 }
 
+.play-rewind-fastf {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 8.3em;
+  top: 1em;
+  right: 0;
+}
+
 @media (min-width: 540px) {
   .rewind-icon,
   .fast-forward-icon {
     display: block;
-    height: 1.5em;
+    order: 0;
   }
   // .rewind-icon,
   // .fast-forward-icon {
@@ -136,18 +149,19 @@
   .replay-icon {
     // padding-right: 1em;
     height: 2.5em;
-    position: static;
     right: 0;
   }
   .control-btns {
     flex-direction: row-reverse;
+    position: relative;
   }
   .play-rewind-fastf {
+    position: static;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 7em;
+    width: 8em;
   }
   .volume-wrapper {
     display: flex;
@@ -158,5 +172,11 @@
     justify-content: flex-end;
     width: fit-content;
     margin-left: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .volume-wrapper {
+    display: none;
   }
 }

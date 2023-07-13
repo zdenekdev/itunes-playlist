@@ -194,8 +194,8 @@ function AudioPlayer(props: { song: Song }) {
                 onClick={handlePlayToggle}
               />
             )}
-            <BackwardIcon className="icon rewind-icon" onClick={rewind} />
 
+            <BackwardIcon className="icon rewind-icon" onClick={rewind} />
             <ForwardIcon
               className="icon fast-forward-icon"
               onClick={fastForward}
