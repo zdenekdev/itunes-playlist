@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import TheForm from "./components/TheForm";
 import TunesList from "./components/TunesList";
 import axios from "axios";
-import "./App.scss";
+import "./styles/App.scss";
 import TheIntro from "./components/TheIntro";
 import TheFooter from "./components/TheFooter";
 
@@ -36,7 +36,7 @@ const extractData = ({
 function App() {
   const [musicList, setMusicList] = useState([]);
   const [loading, setLoading] = useState("hidden");
-  const [emptySearch, setEmptySearch] = useState("emptySearch display-none");
+  const [emptySearch, setEmptySearch] = useState("empty-search display-none");
 
   const getSearchTerm = (term: string) => {
     setLoading("");
@@ -47,13 +47,14 @@ function App() {
         )}&entity=musicTrack&limit=10`
       )
       .then((response) => {
+        console.log(response.data.results);
         let songs = response.data.results.map((song: itunesSong) =>
           extractData(song)
         );
         if (songs.length === 0) {
-          setEmptySearch("emptySearch");
+          setEmptySearch("empty-search");
         } else {
-          setEmptySearch("emptySearch display-none");
+          setEmptySearch("empty-search display-none");
         }
 
         setMusicList(songs);
@@ -65,8 +66,6 @@ function App() {
   useEffect(() => {
     getSearchTerm("great");
   }, []);
-
-  console.log(navigator.userAgent);
 
   return (
     <div className="app">

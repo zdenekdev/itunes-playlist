@@ -1,0 +1,61 @@
+@import "./variables";
+
+.footer-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  height: 6rem;
+  width: 100%;
+  max-width: 88rem;
+  margin-top: 4rem;
+
+  .socials {
+    display: flex;
+    left: 2rem;
+    bottom: 0;
+    gap: 1rem;
+    width: max-content;
+    padding-left: 2rem;
+
+    .github-icon,
+    .linkedin-icon {
+      height: 1.8rem;
+      width: 1.8rem;
+      padding: 0.6rem;
+      margin-bottom: 2rem;
+      border-radius: 50%;
+      background-color: #f9f9f933;
+      background-color: rgba(249, 249, 249, 0.2);
+      color: $color-primary;
+      cursor: pointer;
+      transition: transform 0.1s;
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+  .chevron-up-icon {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    width: 3rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: $color-primary;
+    background-color: #f9f9f933;
+    background-color: rgba(249, 249, 249, 0.2);
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+}
+
+@media (min-width: 88em) {
+  .footer-container {
+    .chevron-up-icon {
+      right: calc(50% - 42rem);
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}

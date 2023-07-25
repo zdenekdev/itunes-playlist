@@ -1,5 +1,5 @@
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
-import "./TheFooter.scss";
+import "../styles/TheFooter.scss";
 import { useEffect, useState } from "react";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,7 +28,6 @@ function TheFooter() {
   }, []);
 
   const goToTop = () => {
-    console.log(window.scrollY * 0.9, window.scrollY);
     window.scrollTo({
       top: 0,
       behavior: "smooth",

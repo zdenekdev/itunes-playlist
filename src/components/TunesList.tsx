@@ -1,6 +1,6 @@
 import { Song } from "../types";
 import TunesSong from "./TunesSong";
-import "./TunesList.scss";
+import "../styles/TunesList.scss";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 type Props = {

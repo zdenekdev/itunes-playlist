@@ -1,4 +1,4 @@
-import "./TunesSong.scss";
+import "../styles/TunesSong.scss";
 import { Song } from "../types/index";
 import { truncate } from "lodash-es";
 import AudioPlayer from "./AudioPlayer";
@@ -6,7 +6,7 @@ import AudioPlayer from "./AudioPlayer";
 function TunesSong(props: { song: Song }) {
   const { song } = props;
 
-  const shorten = (string: string, len = 55) =>
+  const shorten = (string: string, len = 60) =>
     truncate(string, { length: len });
 
   return (

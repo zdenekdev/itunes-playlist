@@ -1,0 +1,70 @@
+@import "./variables";
+
+.tunes-song-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 11rem;
+  min-width: 20rem;
+  padding: 2.2rem 0;
+
+  .tunes-song {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+    position: relative;
+    flex-shrink: 0;
+    color: $color-primary;
+
+    .album-cover {
+      padding-top: 0.2rem;
+      border-radius: 0.4rem;
+      width: 3em;
+      align-self: flex-start;
+    }
+  }
+}
+
+.player-wrapper {
+  width: calc(100% - 4rem);
+
+  .sliding-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+  }
+
+  h2 {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: text;
+  }
+
+  .album {
+    color: $color-secondary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: text;
+  }
+}
+
+@media (min-width: 64em) {
+  .tunes-song-wrapper {
+    .player-wrapper {
+      width: calc(97% - 5rem);
+    }
+
+    .tunes-song {
+      .album-cover {
+        width: 5rem;
+      }
+    }
+  }
+}

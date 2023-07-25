@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./AudioPlayer.scss";
+import "../styles/AudioPlayer.scss";
 import { Song } from "../types";
 import {
   ArrowPathIcon as ReplayIcon,
@@ -77,7 +77,6 @@ function AudioPlayer(props: { song: Song }) {
           if (currentAudio.duration === currentAudio.currentTime) {
             setIsPlaying(false);
             setReplay(true);
-            console.log("konec");
           }
         }
       }, 100);
@@ -93,6 +92,8 @@ function AudioPlayer(props: { song: Song }) {
   useEffect(() => {
     if (audioEl.current!.duration! === audioEl.current!.currentTime) {
       setReplay((prev) => !prev);
+    } else {
+      setReplay(false);
     }
   }, [elapsed]);
 
@@ -124,8 +125,10 @@ function AudioPlayer(props: { song: Song }) {
   };
 
   const handleElapsedChange = (_: Event, value: number | number[]) => {
-    audioEl.current!.currentTime = +value;
-    ElapseFn();
+    if (window.innerWidth > 1024) {
+      audioEl.current!.currentTime = +value;
+      ElapseFn();
+    }
   };
 
   const ElapseFn = () => {
@@ -140,7 +143,7 @@ function AudioPlayer(props: { song: Song }) {
 
       <Slider
         ref={playerEl}
-        className="tunes-player"
+        className="tunes-player-slider"
         aria-label="tunes player"
         value={elapsedMs}
         min={0}
@@ -176,79 +179,81 @@ function AudioPlayer(props: { song: Song }) {
       <div className="controls">
         <div className="control-btns">
           <div className="time-data">
-            <p>
-              {formatTime(elapsed)} / {formatTime(duration)}
-            </p>
+            <div>{formatTime(elapsed)}</div> <div>/ </div>
+            <div>{formatTime(duration)}</div>
           </div>
-          <div className="play-rewind-fastf">
-            {isPlaying ? (
-              <PauseCircleIcon
-                className="icon pause-icon"
-                onClick={handlePlayToggle}
+          <div className="buttons-wrapper">
+            <div className="volume-wrapper">
+              <div className="volume-control">
+                {volumeOn ? (
+                  <SpeakerWaveIcon
+                    className="speaker-icon"
+                    onClick={handleVolumeToggle}
+                  />
+                ) : (
+                  <SpeakerXMarkIcon
+                    className="speaker-off-icon"
+                    onClick={handleVolumeToggle}
+                  />
+                )}
+                <Slider
+                  className="volume-bar"
+                  aria-label="Volume"
+                  value={volumeVal}
+                  min={0}
+                  max={100}
+                  color="secondary"
+                  //   ref={volEl}
+                  onChange={handleVolumeChange}
+                  sx={{
+                    color: "#fff",
+                    height: 4,
+                    "& .MuiSlider-thumb": {
+                      width: 8,
+                      height: 8,
+                      transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+                      "&:before": {
+                        boxShadow: "0 2px 12px 0 rgba(0,0,0,0.4)",
+                      },
+                      "&:hover, &.Mui-focusVisible": {
+                        boxShadow: `0px 0px 0px 8px ${"rgb(255 255 255 / 16%)"}`,
+                      },
+                      "&.Mui-active": {
+                        width: 15,
+                        height: 15,
+                      },
+                    },
+                    "& .MuiSlider-rail": {
+                      opacity: 0.28,
+                    },
+                  }}
+                />
+              </div>
+            </div>
+            <div className="play-rewind-fastf">
+              <BackwardIcon className="icon rewind-icon" onClick={rewind} />
+              <ForwardIcon
+                className="icon fast-forward-icon"
+                onClick={fastForward}
               />
-            ) : replay ? (
-              <ReplayIcon className="icon replay-icon" onClick={handleReplay} />
-            ) : (
-              <PlayCircleIcon
-                className="icon play-icon"
-                onClick={handlePlayToggle}
-              />
-            )}
-
-            <BackwardIcon className="icon rewind-icon" onClick={rewind} />
-            <ForwardIcon
-              className="icon fast-forward-icon"
-              onClick={fastForward}
-            />
+              {isPlaying ? (
+                <PauseCircleIcon
+                  className="icon pause-icon"
+                  onClick={handlePlayToggle}
+                />
+              ) : replay ? (
+                <ReplayIcon
+                  className="icon replay-icon"
+                  onClick={handleReplay}
+                />
+              ) : (
+                <PlayCircleIcon
+                  className="icon play-icon"
+                  onClick={handlePlayToggle}
+                />
+              )}
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div className="volume-wrapper">
-        <div className="volume-control">
-          {volumeOn ? (
-            <SpeakerWaveIcon
-              className="speaker-icon"
-              onClick={handleVolumeToggle}
-            />
-          ) : (
-            <SpeakerXMarkIcon
-              className="speaker-off-icon"
-              onClick={handleVolumeToggle}
-            />
-          )}
-          <Slider
-            className="volume-bar"
-            aria-label="Volume"
-            value={volumeVal}
-            min={0}
-            max={100}
-            color="secondary"
-            //   ref={volEl}
-            onChange={handleVolumeChange}
-            sx={{
-              color: "#fff",
-              height: 4,
-              "& .MuiSlider-thumb": {
-                width: 8,
-                height: 8,
-                transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-                "&:before": {
-                  boxShadow: "0 2px 12px 0 rgba(0,0,0,0.4)",
-                },
-                "&:hover, &.Mui-focusVisible": {
-                  boxShadow: `0px 0px 0px 8px ${"rgb(255 255 255 / 16%)"}`,
-                },
-                "&.Mui-active": {
-                  width: 15,
-                  height: 15,
-                },
-              },
-              "& .MuiSlider-rail": {
-                opacity: 0.28,
-              },
-            }}
-          />
         </div>
       </div>
     </div>

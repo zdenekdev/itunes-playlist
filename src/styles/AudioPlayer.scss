@@ -1,0 +1,149 @@
+@import "./variables";
+
+.audio-player-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .tunes-player-slider {
+    padding-bottom: 0 !important;
+    cursor: default !important;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1rem;
+
+    .control-btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      width: 100%;
+    }
+
+    .time-data {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      align-self: flex-start;
+      font-size: 0.8rem;
+      width: 6.9rem;
+
+      p {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.volume-wrapper {
+  display: none;
+
+  .volume-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 9rem;
+  }
+  .speaker-icon,
+  .speaker-off-icon {
+    color: $color-primary;
+    height: 2rem;
+    transition: transform 0.1s ease-out;
+    margin-right: 1rem;
+
+    cursor: pointer;
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+}
+
+.play-rewind-fastf {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 9rem;
+  right: 0;
+  top: 1.2rem;
+
+  .icon {
+    transition: transform 0.2s;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  .rewind-icon,
+  .fast-forward-icon {
+    height: 1.7rem;
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+
+  .replay-icon {
+    width: 3rem !important;
+    padding: 0.2rem;
+  }
+
+  .play-icon,
+  .pause-icon,
+  .replay-icon {
+    height: 2.5rem;
+    right: 0;
+  }
+}
+
+.buttons-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  right: 0;
+  top: 0.5rem;
+}
+
+@media (min-width: 34em) {
+  .rewind-icon,
+  .fast-forward-icon {
+    display: block;
+  }
+
+  .play-icon,
+  .pause-icon,
+  .replay-icon {
+    right: 0;
+    height: 2.5rem;
+  }
+
+  .volume-wrapper {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .volume-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: fit-content;
+  }
+
+  .audio-player-wrapper {
+    .tunes-player-slider {
+      cursor: pointer !important;
+    }
+  }
+
+  .buttons-wrapper {
+    width: 20rem;
+  }
+}

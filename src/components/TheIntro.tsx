@@ -1,4 +1,4 @@
-import "./TheIntro.scss";
+import "../styles/TheIntro.scss";
 
 function TheIntro() {
   return (
@@ -6,7 +6,7 @@ function TheIntro() {
       <h1>
         <span>iTunes </span>Playlist
       </h1>
-      <div className="line"></div>
+      <div className="intro-line"></div>
     </div>
   );
 }
