@@ -44,7 +44,7 @@ function App() {
       .get(
         `https://itunes.apple.com/search?term=${encodeURI(
           term
-        )}&entity=musicTrack&limit=10`
+        )}&entity=musicTrack&limit=6`
       )
       .then((response) => {
         console.log(response.data.results);
