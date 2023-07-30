@@ -69,9 +69,7 @@ function AudioPlayer(props: { song: Song }) {
       intervalId = setInterval(() => {
         const currentAudio = audioEl.current;
         if (currentAudio) {
-          // const _duration = Math.floor(currentAudio.duration || 29);
           const _elapsed = Math.floor(currentAudio.currentTime || 0);
-          // setDuration(_duration);
           setElapsed(_elapsed);
           setElapsedMs(currentAudio.currentTime || 0);
           if (currentAudio.duration === currentAudio.currentTime) {
@@ -149,7 +147,6 @@ function AudioPlayer(props: { song: Song }) {
         min={0}
         max={duration}
         color="secondary"
-        //   ref={volEl}
         onChange={handleElapsedChange}
         sx={{
           color: "#fff",
@@ -203,7 +200,6 @@ function AudioPlayer(props: { song: Song }) {
                   min={0}
                   max={100}
                   color="secondary"
-                  //   ref={volEl}
                   onChange={handleVolumeChange}
                   sx={{
                     color: "#fff",
