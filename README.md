@@ -1,3 +1,4 @@
+<br>
 <div align='center'><img style="width:35%" src='https://raw.githubusercontent.com/zdenekdev/itunes-playlist/main/src/assets/itunes-playlist-logo.png'/></div>
 <h2>About the project</h2>
 
