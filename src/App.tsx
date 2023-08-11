@@ -69,7 +69,6 @@ function App() {
 
   return (
     <div className="app">
-      {/* <div className="cover"> */}
       <div className="playlist">
         <TheIntro />
         <TheForm
@@ -80,7 +79,6 @@ function App() {
         <TunesList musicList={musicList} />
         <TheFooter />
       </div>
-      {/* </div> */}
     </div>
   );
 }
