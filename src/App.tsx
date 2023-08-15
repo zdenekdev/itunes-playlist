@@ -47,7 +47,6 @@ function App() {
         )}&entity=musicTrack&limit=10`
       )
       .then((response) => {
-        console.log(response.data.results);
         let songs = response.data.results.map((song: itunesSong) =>
           extractData(song)
         );
